@@ -14,8 +14,8 @@
             <!-- حلقه روی داده‌ها -->
             {% for employee in employees %}
                 <li>
-                    {{ employee.first_name }} {{ employee.last_name }} 
-                    - {{ employee.job_position }}
+                    {{ employee.fullname }}
+                    - {{ employee.role }}
                 </li>
             {% endfor %}
         </ul>

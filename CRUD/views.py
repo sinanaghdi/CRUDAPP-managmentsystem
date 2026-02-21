@@ -3,12 +3,17 @@ from django.views.generic import ListView , CreateView , DeleteView, UpdateView 
 from django.urls import reverse_lazy
 # Create your views here.
 from .models import employee
-from .form import EmployeeForm
+# from .form import EmployeeForm
 
 class EmployeeListView(ListView):
     model = employee
-    template_name = 'templates/CRUD/employee_list.html'
-    context_object_name = 'Employees'
+    template_name = 'CRUD/employee_list.html'
+    context_object_name = 'employees'
+    
+    def get_queryset(self):
+        qs = super().get_queryset()
+        print("Queryset:", qs)  # این رو در ترمینال ببین
+        return qs
     
 # class EmployeeDetailView(DetailView):
 #     model = employee
