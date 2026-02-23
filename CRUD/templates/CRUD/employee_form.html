@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>افزودن کارمند</title>
+</head>
+<body>
+    <h1>افزودن کارمند جدید</h1>
+    
+    <form method="post">
+        {% csrf_token %}  
+        {{ form.as_p }}   
+        <button type="submit">ذخیره</button>
+    </form>
+    
+    <br>
+    <a href="{% url 'employee_list' %}">بازگشت به لیست</a>
+</body>
+</html>

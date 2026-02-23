@@ -1,28 +1,31 @@
-from django.shortcuts import render
-from django.views.generic import ListView , CreateView , DeleteView, UpdateView , DetailView
+from django.views.generic import ListView, CreateView, UpdateView, DeleteView, DetailView
 from django.urls import reverse_lazy
-# Create your views here.
 from .models import employee
-# from .form import EmployeeForm
+from .form import EmployeeForm
 
 class EmployeeListView(ListView):
     model = employee
     template_name = 'CRUD/employee_list.html'
     context_object_name = 'employees'
-    
-    def get_queryset(self):
-        qs = super().get_queryset()
-        print("Queryset:", qs)  # این رو در ترمینال ببین
-        return qs
-    
-# class EmployeeDetailView(DetailView):
-#     model = employee
-#     template_name = 'templates/employees/employee_detail.html'
 
+class EmployeeCreateView(CreateView):
+    model = employee
+    form_class = EmployeeForm
+    template_name = 'CRUD/employee_form.html'
+    success_url = reverse_lazy('employee_list')
 
-# class EmployeeDeleteView(DeleteView):
-#     model = employee
-#     template_name = 'templates/employees/employee_confirm_delete.html'
-#     success_url = reverse_lazy('employee_list')
+class EmployeeDetailView(DetailView):
+    model = employee
+    template_name = 'CRUD/employee_detail.html'
+    context_object_name = 'employee'
 
-# class 
+class EmployeeUpdateView(UpdateView):
+    model = employee
+    form_class = EmployeeForm
+    template_name = 'CRUD/employee_form.html'
+    success_url = reverse_lazy('employee_list')
+
+class EmployeeDeleteView(DeleteView):
+    model = employee
+    template_name = 'CRUD/employee_confirm_delete.html'
+    success_url = reverse_lazy('employee_list')

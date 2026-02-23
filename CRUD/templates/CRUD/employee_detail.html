@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>جزئیات کارمند</title>
+</head>
+<body>
+    <h1>جزئیات کارمند</h1>
+    
+    <hr>
+    <p><strong>نام کامل:</strong> {{ employee.fullname }}</p>
+    <p><strong>سمت شغلی:</strong> {{ employee.role }}</p>
+    <p><strong>حقوق:</strong> {{ employee.salary }} تومان</p>
+    <p><strong>تاریخ استخدام:</strong> {{ employee.hired_date }}</p>
+    <p><strong>ایمیل:</strong> {{ employee.Email }}</p>
+    <hr>
+    
+    <a href="{% url 'employee_list' %}">بازگشت به لیست</a> | 
+    <a href="{% url 'employee_update' employee.pk %}">ویرایش</a> | 
+    <a href="{% url 'employee_delete' employee.pk %}">حذف</a>
+</body>
+</html>

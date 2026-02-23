@@ -17,6 +17,9 @@
                     {{ employee.fullname }}
                     - {{ employee.role }}
                 </li>
+        <a href="{% url 'employee_detail' employee.pk %}">📄 مشاهده</a>
+        <a href="{% url 'employee_update' employee.pk %}">✏️ ویرایش</a>
+        <a href="{% url 'employee_delete' employee.pk %}">🗑️ حذف</a>
             {% endfor %}
         </ul>
     {% endif %}
